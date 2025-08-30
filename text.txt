@@ -1,0 +1,62 @@
+/my-discount-engine
+├── /src
+│   ├── /app                     # Next.js App Router root
+│   │   ├── page.tsx             # Engine එක test කරන ප්‍රධාන frontend page එක
+│   │   └── layout.tsx           # Page එකට පොදු layout එක
+│   ├── /components              # Frontend Components
+│   │   ├── CartDisplay.tsx      # Cart එකේ තොරතුරු පෙන්වීමට
+│   │   ├── ProductList.tsx      # භාණ්ඩ ලැයිස්තුව පෙන්වීමට
+│   │   └── ApplyDiscount.tsx    # Discount apply කිරීමට බොත්තමක් හෝ form එකක්
+│   ├── /data                    # Testing සඳහා Mock Data
+│   │   ├── initialCart.ts       # පටන් ගන්නා Cart එක
+│   │   ├── products.ts          # Mock භාණ්ඩ ලැයිස්තුව
+│   │   └── discounts.ts         # Test කිරීමට අවශ්‍ය discount rules ලැයිස්තුව
+│   ├── /engine                  # Discount Engine එකේ Core Logic එක
+│   │   ├── DiscountEngine.ts    # Main Engine Class එක (discounts apply කරන logic එක)
+│   │   ├── rules                # විවිධ discount rules
+│   │   │   ├── FixedDiscount.ts
+│   │   │   └── PercentageDiscount.ts
+│   │   │   └── BogoDiscount.ts      # Buy-One-Get-One-Free වැනි සංකීර්ණ rules
+│   │   └── IDiscountRule.ts     # හැම rule එකක්ම අනුගමනය කළ යුතු Interface එක
+│   ├── /lib                     # Utility functions සහ Helpers
+│   │   └── helpers.ts           # උදව්කාර functions (උදා: මිල ගණනය කිරීම්)
+│   └── /types                   # TypeScript Interfaces සහ Types
+│       ├── Cart.ts
+│       ├── Product.ts
+│       └── User.ts
+├── package.json
+├── tsconfig.json
+├── next.config.js
+└── .gitignore
+
+
+mata one loke  nextjs walin discount engine ekak hadanna, reusable wenna one, powerfull, dynamic wenna one, onema discount rule ekak passe add kranna puluwan wenna one, 
+onema project ekaka reuse kranna puluwan wenna one
+nextjs frontend eke test kranne danata... no server.. but server eke tamai passe meka danne, danata meka discount engene ekak vitrai, mata re use kranna one library ekak vitrai
+meka typesafe, anagate onema dekata use keanna puluwan vidihata mata folder ekaka tiyenna one
+random discount lgic passe add kranna one
+
+fixed and presentage waise calculate wenna one
+
+ekama product ekata multy discount add wenna one.
+
+discount rule name and eke id ekn frontend eke dropdown eken select kalama kalin rules assign krala tiyana
+care eke lign by product walata multy discount add wenna one
+
+eka eka product walata wenama names walin discount wen wena custom assign kranna puluwan wenna one
+random reusable wenna one
+
+ekama prduct eka batch dekaka product walata wena wenama multy discount add wenna one
+
+etakota logic aplay wenna one
+
+1. carrt eke min qty eka ta wada wedinam 5% or fixed price
+2 cart eke min total x ta wada wedinam 10% fiexxd or gift denna one
+3 full globel cart eke qtyx min nam ekata wenama gift or percentage or fix price discount
+4 cart eke full total x min ta wada wedinam wenama percentage or fixed or gift
+ buy 2 get 1 wage custom 
+
+
+ discount name walin assign kranna one 
+
+ ewage loke hema logic ekakma add kranna puluwan random, dynamic multy aplay wenna one
