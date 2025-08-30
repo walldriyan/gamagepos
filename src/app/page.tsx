@@ -2,9 +2,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import type { Product, SaleItem, ProductBatch, DiscountSet } from '@/types';
+
 import { summerSale, vintageSale } from '@/discount-engine/lib/my-campaigns';
 import { getMyDiscounts } from '@/discount-engine/lib/discount-service';
+import { DiscountSet, Product, ProductBatch, SaleItem } from '@/discount-engine/models/types';
 
 // --- උදාහරණයක් සඳහා Products සහ Batches ---
 const oldBatch: ProductBatch = { id: 't-shirt-batch-old', batchNumber: 'OLD-2023', price: 2000 };
