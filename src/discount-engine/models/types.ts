@@ -1,53 +1,12 @@
-// src/types.ts
+// src/discount-engine/models/types.ts
 
-// ඔබගේ අලුත් project එකේ "භාණ්ඩයක්" නිරූපණය කරන ආකාරය
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  category?: string;
-  batches?: ProductBatch[]; // Batch තොරතුරු සඳහා
-}
+/**
+ * This file can be used for types that are internal and specific
+ * to the discount engine's logic, separating them from the main
+ * application's `src/types/index.ts`.
+ *
+ * For now, we can rely on the global types, but as the engine
+ * grows, we can define more specific internal models here.
+ */
 
-// ඔබගේ අලුත් project එකේ "කාණ්ඩයක්" (batch) නිරූපණය කරන ආකාරය
-export interface ProductBatch {
-  id: string;
-  batchNumber: string;
-  price: number; // Batch එකට විශේෂිත වූ මිල
-}
-
-// Cart එකේ ඇති භාණ්ඩයක්
-export interface SaleItem extends Product {
-  saleItemId: string; // Cart එකේදී වෙන් කර ගැනීමට
-  quantity: number;
-  selectedBatch?: ProductBatch; // කුමන batch එකෙන්ද ආවේ කියා දැනගැනීමට
-}
-
-// වට්ටම් නීතියක්
-export interface SpecificDiscountRuleConfig {
-  isEnabled: boolean;
-  name: string;
-  type: 'percentage' | 'fixed';
-  value: number;
-  conditionMin?: number | null;
-  applyFixedOnce?: boolean;
-}
-
-// සම්පූර්ණ වට්ටම් මාලාවක් (Campaign)
-export interface DiscountSet {
-  buyGetRulesJson: any;
-  id: string;
-  name: string;
-  isActive: boolean;
-  isDefault: boolean;
-  isOneTimePerTransaction: boolean;
-  productConfigurations?: {
-    productId: string;
-    lineItemValueRuleJson: SpecificDiscountRuleConfig | null;
-  }[];
-  batchConfigurations?: { // Batch-wise rules මෙහි අර්ථ දක්වයි
-    productBatchId: string;
-    lineItemValueRuleJson: SpecificDiscountRuleConfig | null;
-  }[];
-  globalCartPriceRuleJson?: SpecificDiscountRuleConfig | null;
-}
+export {};

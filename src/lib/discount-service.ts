@@ -1,7 +1,6 @@
 // src/lib/discount-service.ts
 import { DiscountEngine } from '@/discount-engine';
-import { DiscountSet, SaleItem } from '../models/types';
-
+import type { SaleItem, DiscountSet } from '@/types';
 
 export function getMyDiscounts(cartItems: SaleItem[], activeCampaign: DiscountSet) {
   const engine = new DiscountEngine(activeCampaign);

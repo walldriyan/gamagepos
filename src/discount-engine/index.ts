@@ -10,8 +10,7 @@ import { BuyXGetYRule } from './rules/buy-x-get-y-rule';
 import { CartTotalRule } from './rules/cart-total-rule';
 import { BatchSpecificRule } from './rules/batch-specific-rule';
 import { CustomItemDiscountRule } from './rules/custom-item-discount-rule';
-import { DiscountSet } from './models/types';
-
+import type { DiscountSet } from '@/types';
 
 export class DiscountEngine {
   private rules: IDiscountRule[] = [];
@@ -44,8 +43,8 @@ export class DiscountEngine {
 
     // Priority 4: "Buy X, Get Y" rules
     if (campaign.buyGetRulesJson) {
-      campaign.buyGetRulesJson.forEach((ruleConfig: any) => {
-        this.rules.push(new BuyXGetYRule(ruleConfig,campaign.name));
+      campaign.buyGetRulesJson.forEach((ruleConfig) => {
+        this.rules.push(new BuyXGetYRule(ruleConfig));
       });
     }
 

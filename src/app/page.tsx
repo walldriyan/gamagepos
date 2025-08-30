@@ -2,10 +2,9 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-
-import { summerSale, vintageSale } from '@/discount-engine/lib/my-campaigns';
-import { getMyDiscounts } from '@/discount-engine/lib/discount-service';
-import { DiscountSet, Product, ProductBatch, SaleItem } from '@/discount-engine/models/types';
+import type { Product, SaleItem, ProductBatch, DiscountSet } from '@/types';
+import { summerSale, vintageSale } from '@/lib/my-campaigns'; // අප සෑදූ campaigns
+import { getMyDiscounts } from '@/lib/discount-service'; // අප සෑදූ service එක
 
 // --- උදාහරණයක් සඳහා Products සහ Batches ---
 const oldBatch: ProductBatch = { id: 't-shirt-batch-old', batchNumber: 'OLD-2023', price: 2000 };
@@ -18,7 +17,7 @@ const sampleProducts: Product[] = [
 
 const allCampaigns = [summerSale, vintageSale];
 
-export default function Home() {
+export default function MyNewEcommerceShop() {
   const [cart, setCart] = useState<SaleItem[]>([]);
   const [activeCampaign, setActiveCampaign] = useState<DiscountSet>(summerSale);
 
@@ -63,7 +62,7 @@ export default function Home() {
             <div key={p.id} style={{ border: '1px solid #ccc', padding: '1rem', margin: '0.5rem 0' }}>
               <h4>{p.name}</h4>
               {p.batches ? (
-                p.batches.map( b => (
+                p.batches.map(b => (
                   <div key={b.id} style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
                     <p>Batch: {b.batchNumber} - Rs. {b.price.toFixed(2)}</p>
                     <button onClick={() => addToCart(p, b)}>Add this Batch</button>
